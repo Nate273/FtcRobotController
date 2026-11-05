@@ -3,7 +3,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-
+@Autonomous(name="Auto that will score lots of points this year")
 public class Auto extends LinearOpMode {
     double ticksperInch = 537.7 * 19.2 / 326.73;
     public double ticksperDegree = 537.7 * 19.2 / 360;

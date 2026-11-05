@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
-
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Telop for Straffer")
 public class StrafferTelop extends LinearOpMode{
     public Hardware robot;
     @Override
