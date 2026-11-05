@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.Range;
-import com.qualcomm.robotcore.hardware.Servo;
+
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Telop for Straffer")
 public class StrafferTelop extends LinearOpMode{
     public Hardware robot;
@@ -16,15 +15,15 @@ public class StrafferTelop extends LinearOpMode{
         while (opModeIsActive()) {
 
             double drive = -gamepad1.left_stick_y;
-            double turn = gamepad1.left_stick_x * 1.1;
-            double Strafe = gamepad1.right_stick_x;
+            double strafe = gamepad1.left_stick_x * 1.1;
+            double turn = gamepad1.right_stick_x;
 
-            double denominator = Math.max(Math.abs(drive) + Math.abs(turn) + Math.abs(Strafe), 1);
+            double denominator = Math.max(Math.abs(drive) + Math.abs(strafe) + Math.abs(turn), 1);
 
-            double leftPower = (drive + turn + Strafe) / denominator;
-            double backLeftPower = (drive - turn + Strafe) / denominator;
-            double rightPower = (drive - turn - Strafe) / denominator;
-            double backRightPower = (drive + turn - Strafe) / denominator;
+            double leftPower = (drive + strafe + turn) / denominator;
+            double backLeftPower = (drive - strafe + turn) / denominator;
+            double rightPower = (drive - strafe - turn) / denominator;
+            double backRightPower = (drive + strafe - turn) / denominator;
 
             robot.left.setPower(gamepad1.right_bumper ? leftPower * 0.5 : leftPower);
             robot.right.setPower(gamepad1.right_bumper ? rightPower * 0.5 : rightPower);
@@ -37,18 +36,18 @@ public class StrafferTelop extends LinearOpMode{
                 robot.intake.setPower(0);
             }
             if (gamepad2.triangle) {
-                robot.lift.setPosition(.5);
+                robot.lift.setPosition(-0.5);
                 robot.push.setPosition(0);
             } else {
                 robot.lift.setPosition(0);
             }
             if (gamepad2.x) {
-                robot.lift.setPosition(.98);
-                robot.push.setPosition(.5);
+                robot.lift.setPosition(-0.98);
+                robot.push.setPosition(-0.5);
             }
             if (gamepad2.right_trigger > .5) {
-                robot.shooter.setVelocity(203);
-                robot.push.setPosition(.98);
+                robot.shooter.setVelocity(-203);
+                robot.push.setPosition(-0.98);
             }else{
                 robot.shooter.setVelocity(0);
             }
